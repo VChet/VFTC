@@ -1,0 +1,38 @@
+<script lang="ts">
+  import type { CalculatorStatus } from "../types/Calculator";
+  import Calculator from "./Calculator.svelte";
+  import StatusBar from "./StatusBar.svelte";
+  let status: CalculatorStatus;
+</script>
+
+<StatusBar {status} />
+<main class="container">
+  <Calculator on:status={({ detail }) => (status = { ...status, ...detail })} />
+</main>
+
+<style lang="scss">
+  main {
+    padding-top: 10vh;
+  }
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+</style>

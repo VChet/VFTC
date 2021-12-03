@@ -1,0 +1,40 @@
+{
+  "name": "fuel-tank-converter",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VChet/ftc.git"
+  },
+  "license": "AGPL-3.0-or-later",
+  "author": "VChet",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "ts-mocha -p ./tsconfig.json ./tests/*.ts"
+  },
+  "dependencies": {
+    "sirv-cli": "^1.0.14"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@tsconfig/svelte": "^2.0.1",
+    "chai": "^4.3.4",
+    "rollup": "^2.60.2",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.44.0",
+    "svelte": "^3.44.2",
+    "svelte-check": "^2.2.10",
+    "svelte-preprocess": "^4.9.8",
+    "ts-mocha": "^8.0.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.2"
+  }
+}
