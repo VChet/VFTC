@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { CalculatorStatus } from "../types/Calculator";
+  import type { CalculatorStatus } from "@/types/Calculator";
 
   export let status: CalculatorStatus = {
     active: false,

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import { calculateNumber } from "../calculator";
-  import type { CalculatorMode, CalculatorStatus, CalculatorTankSize } from "../types/Calculator";
+  import { calculateNumber } from "@/calculator";
+  import type { CalculatorMode, CalculatorStatus, CalculatorTankSize } from "@/types/Calculator";
 
   let input: string;
   let output: string;
