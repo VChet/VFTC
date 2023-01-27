@@ -40,7 +40,6 @@
   <div class="area">
     <textarea
       bind:value={input}
-      type="textarea"
       rows="20"
       cols="30"
       spellcheck="false"
@@ -62,7 +61,6 @@
   <div class="area">
     <textarea
       bind:value={output}
-      type="textarea"
       rows="20"
       cols="30"
       spellcheck="false"
