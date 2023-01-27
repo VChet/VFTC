@@ -1,9 +1,9 @@
 {
-  "name": "fuel-tank-converter",
+  "name": "volvo-fuel-tank-converter",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VChet/ftc.git"
+    "url": "git+https://github.com/VChet/vftc.git"
   },
   "license": "AGPL-3.0-or-later",
   "author": "VChet",
