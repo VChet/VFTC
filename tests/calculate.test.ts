@@ -1,5 +1,5 @@
+import { describe, expect, test } from "vitest";
 import { calculateNumber } from "@/calculator";
-import { test, expect, describe } from "vitest";
 
 describe("MM to L", () => {
   test("Число 0", () => {

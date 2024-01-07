@@ -4,7 +4,7 @@
   export let status: CalculatorStatus = {
     active: false,
     message: null,
-    color: "#27272780",
+    color: "#27272780"
   };
 
   $: if (status && status.active) {

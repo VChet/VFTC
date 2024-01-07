@@ -1,24 +1,29 @@
 {
   "name": "volvo-fuel-tank-converter",
+  "type": "module",
   "version": "1.0.0",
+  "author": "VChet",
+  "license": "AGPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VChet/vftc.git"
   },
-  "license": "AGPL-3.0-or-later",
-  "author": "VChet",
-  "type": "module",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "start": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
     "test": "vitest --run"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.6.1",
     "@sveltejs/vite-plugin-svelte": "^2.4.1",
     "@tsconfig/svelte": "^4.0.1",
     "@types/jest": "^29.5.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-svelte": "^2.35.1",
     "sass": "^1.62.1",
     "svelte": "^3.59.1",
     "svelte-check": "^3.4.3",

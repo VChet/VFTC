@@ -2,6 +2,7 @@
   import type { CalculatorStatus } from "@/types/Calculator";
   import Calculator from "@/components/Calculator.svelte";
   import StatusBar from "@/components/StatusBar.svelte";
+
   let status: CalculatorStatus;
 </script>
 
