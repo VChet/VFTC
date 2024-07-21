@@ -1,4 +1,4 @@
-import App from "@/components/App.svelte";
+import App from "./App.svelte";
 
 import "@/global.scss";
 

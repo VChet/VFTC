@@ -5,18 +5,18 @@ body {
   height: 100%;
 }
 body {
-  margin: 0;
   padding: 0;
-  background: #272727 url("/assets/background.webp") no-repeat center/cover fixed;
-  text-align: center;
-  color: #fff;
+  margin: 0;
   font-size: 18px;
+  color: #fff;
+  text-align: center;
   text-shadow: 0 2px 1px #000;
+  background: #272727 url("/assets/background.webp") no-repeat center/cover fixed;
 }
 * {
   box-sizing: border-box;
 }
 *,
 ::placeholder {
-  font-family: Tahoma, Helvetica, Arial, Sans-Serif;
+  font-family: Tahoma, Helvetica, Arial, sans-serif;
 }

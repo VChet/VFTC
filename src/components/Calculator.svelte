@@ -77,12 +77,12 @@
     button {
       min-width: 200px;
       padding: 10px;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+      background-color: #343a40;
       border: 1px solid #343a40;
       border-radius: 4px;
-      background-color: #343a40;
-      color: #fff;
-      font-size: 20px;
-      cursor: pointer;
       transition: color 0.3s, background-color 0.3s, border-color 0.3s;
       &:hover {
         color: #fff;
@@ -114,6 +114,27 @@
         opacity: 0.75;
       }
     }
+    select {
+      height: 40px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #222;
+      &.empty {
+        border: 3px solid red;
+        border-radius: 4px;
+      }
+    }
+    textarea {
+      resize: vertical;
+      &::selection {
+        background-color: #22aa2a60;
+      }
+      &::placeholder {
+        font-size: 20px;
+        color: #222;
+        text-align: center;
+      }
+    }
     .area {
       display: flex;
       flex-direction: column;
@@ -131,33 +152,12 @@
           opacity: 1;
         }
       }
-      select {
-        height: 40px;
-        color: #222;
-        font-size: 16px;
-        font-weight: bold;
-        &.empty {
-          border: 3px solid red;
-          border-radius: 4px;
-        }
-      }
-      textarea {
-        resize: vertical;
-        &::selection {
-          background-color: #22aa2a60;
-        }
-        &::placeholder {
-          text-align: center;
-          color: #222;
-          font-size: 20px;
-        }
-      }
     }
     .center-block {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 10px;
+      align-items: center;
     }
   }
 </style>

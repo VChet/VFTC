@@ -5,6 +5,7 @@ export default antfu({
   svelte: true,
   rules: {
     "antfu/if-newline": "off",
+    "antfu/consistent-list-newline": "off",
     "curly": ["error", "multi-line"],
     "no-console": "off",
     "style/arrow-parens": ["error", "always"],
