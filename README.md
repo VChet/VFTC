@@ -6,6 +6,6 @@
 
 ## Разработка
 
-- Установить зависимости: `npm install`
-- Запуск dev-сервера: `npm run dev`
-- Сборка production версии: `npm run build`
+- Установить зависимости: `pnpm install`
+- Запуск dev-сервера: `pnpm run dev`
+- Сборка production версии: `pnpm run build`

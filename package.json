@@ -9,6 +9,7 @@
     "url": "git+https://github.com/VChet/vftc.git"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "vite build",
     "dev": "vite",
     "start": "vite preview",
