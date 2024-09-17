@@ -1,24 +1,84 @@
+import process from "node:process";
 import antfu from "@antfu/eslint-config";
 
 export default antfu({
   toml: false,
   svelte: true,
   rules: {
-    "antfu/if-newline": "off",
     "antfu/consistent-list-newline": "off",
+    "antfu/if-newline": "off",
     "curly": ["error", "multi-line"],
-    "no-console": "off",
+    "import/no-useless-path-segments": ["error", { noUselessIndex: true }],
+    "max-lines": ["warn", { max: 1000 }],
+    "max-params": ["error", { max: 6 }],
+    "no-await-in-loop": "error",
+    "no-console": [process.env.NODE_ENV === "production" ? "error" : "warn", {
+      allow: ["table", "info", "warn", "error"]
+    }],
+    "no-duplicate-imports": "error",
+    "no-else-return": "error",
+    "no-restricted-globals": ["error",
+      { name: "global", message: "Use `globalThis` instead." },
+      { name: "self", message: "Use `globalThis` instead." },
+      { name: "location", message: "Use `window.location` instead." },
+      { name: "close", message: "Use `window.close` instead." }
+    ],
+    "no-return-assign": "error",
+    "no-script-url": "error",
+    "no-useless-concat": "error",
+    "no-void": "error",
+    "perfectionist/sort-imports": ["error", {
+      internalPattern: ["@/**"],
+      groups: [
+        "builtin",
+        "svelte",
+        "external",
+        "type",
+        "internal",
+        ["parent", "sibling", "index"],
+        "internal-type",
+        ["parent-type", "sibling-type", "index-type"],
+        "svelte-components",
+        "side-effect",
+        "object",
+        "unknown"
+      ],
+      customGroups: {
+        value: {
+          "svelte": "svelte",
+          "svelte-components": ["**/*.svelte", "./**/*.svelte", "../**/*.svelte"]
+        },
+        type: {
+          "svelte": "svelte",
+          "svelte-components": ["**/*.svelte", "./**/*.svelte", "../**/*.svelte"]
+        }
+      },
+      newlinesBetween: "ignore",
+      order: "asc",
+      type: "natural"
+    }],
+    "prefer-destructuring": ["error", { array: true, object: true }],
+    "require-await": "warn",
     "style/arrow-parens": ["error", "always"],
-    "style/brace-style": ["error", "1tbs"],
+    "style/brace-style": ["error", "1tbs", { allowSingleLine: true }],
     "style/comma-dangle": ["error", "never"],
+    "style/lines-between-class-members": "off",
     "style/max-statements-per-line": "off",
     "style/operator-linebreak": ["error", "after"],
     "style/quotes": ["error", "double"],
     "style/semi": ["error", "always"],
     "svelte/html-quotes": ["error", { prefer: "double" }],
-    "test/consistent-test-it": ["error", { fn: "test" }],
-    "test/prefer-lowercase-title": "off",
+    "ts/array-type": "error",
+    "ts/consistent-indexed-object-style": "error",
     "ts/consistent-type-definitions": "off",
+    "ts/no-shadow": "error",
+    "ts/no-unused-expressions": ["error", {
+      allowShortCircuit: true,
+      allowTaggedTemplates: true,
+      allowTernary: true
+    }],
+    "unicorn/prefer-includes": "off",
+    "unused-imports/no-unused-vars": "off",
     "yaml/quotes": ["error", { prefer: "double" }]
   }
 });

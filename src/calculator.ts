@@ -1,7 +1,7 @@
 import tankData from "@/tankData.json";
 import type { CalculatorMode, CalculatorTankSize } from "@/types/Calculator";
 
-function calculateLiters(mm: number, tank: Array<number>): string {
+function calculateLiters(mm: number, tank: number[]): string {
   let result: number;
   if (mm - Math.floor(mm) === 0.5) {
     mm = mm - 0.5;
@@ -15,14 +15,14 @@ function calculateLiters(mm: number, tank: Array<number>): string {
   return result.toFixed(2);
 }
 
-function calculateMM(liters: number, tank: Array<number>) {
+function calculateMM(liters: number, tank: number[]) {
   return tank.indexOf(liters);
 }
 
 export function calculateNumber(value: string, tankSize: CalculatorTankSize, mode: CalculatorMode) {
   if (value === "") return "";
 
-  const tank: Array<number> = tankData[tankSize];
+  const tank: number[] = tankData[tankSize];
   const num: number = Number.parseFloat(value);
 
   if (Number.isNaN(num)) return "НЕДОПУСТИМЫЕ СИМВОЛЫ";

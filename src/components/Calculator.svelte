@@ -15,7 +15,7 @@
   function calculate() {
     if (!input || !selectedTank) return;
     const inputArray = input.replace(/,/g, ".").split("\n");
-    const resultArray: Array<string> = inputArray.reduce((acc: Array<string>, value: string) => {
+    const resultArray: string[] = inputArray.reduce((acc: string[], value: string) => {
       acc.push(calculateNumber(value, selectedTank, mode).toString());
       return acc;
     }, []);
