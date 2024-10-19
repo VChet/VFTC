@@ -44,7 +44,7 @@
       cols="30"
       spellcheck="false"
       placeholder={mode === "millimeters" ? "Замеры в миллиметрах" : "Замеры в литрах"}
-    />
+    ></textarea>
     <select class:empty={!selectedTank} bind:value={selectedTank}>
       <option selected value hidden>Выбор бака</option>
       <option value="490">Малый (490)</option>
@@ -65,7 +65,7 @@
       cols="30"
       spellcheck="false"
       placeholder={mode === "millimeters" ? "Замеры в литрах" : "Замеры в миллиметрах"}
-    />
+    ></textarea>
     <button type="button" on:click={copyToBuffer} disabled={!output}>Копировать</button>
   </div>
 </form>
