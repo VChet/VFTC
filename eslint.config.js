@@ -1,6 +1,11 @@
 import process from "node:process";
 import antfu from "@antfu/eslint-config";
 
+const SORT_IMPORT_CUSTOM_GROUP = {
+  "svelte": "^svelte$",
+  "svelte-components": "\\.svelte$"
+};
+
 export default antfu({
   toml: false,
   svelte: true,
@@ -29,8 +34,13 @@ export default antfu({
     "no-script-url": "error",
     "no-useless-concat": "error",
     "no-void": "error",
+    "perfectionist/sort-named-imports": ["error", {
+      order: "asc",
+      type: "natural",
+      groupKind: "values-first"
+    }],
     "perfectionist/sort-imports": ["error", {
-      internalPattern: ["@/**"],
+      internalPattern: ["^@/"],
       groups: [
         "builtin",
         "svelte",
@@ -46,14 +56,8 @@ export default antfu({
         "unknown"
       ],
       customGroups: {
-        value: {
-          "svelte": "svelte",
-          "svelte-components": ["**/*.svelte", "./**/*.svelte", "../**/*.svelte"]
-        },
-        type: {
-          "svelte": "svelte",
-          "svelte-components": ["**/*.svelte", "./**/*.svelte", "../**/*.svelte"]
-        }
+        value: SORT_IMPORT_CUSTOM_GROUP,
+        type: SORT_IMPORT_CUSTOM_GROUP
       },
       newlinesBetween: "ignore",
       order: "asc",
