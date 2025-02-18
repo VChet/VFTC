@@ -1,14 +1,16 @@
 <script lang="ts">
-  import type { CalculatorStatus } from "@/types/Calculator";
+  import type { NotificationPayload } from "@/types/calculator";
   import Calculator from "@/components/Calculator.svelte";
   import StatusBar from "@/components/StatusBar.svelte";
 
-  let status: CalculatorStatus;
+  let notification: NotificationPayload | null = $state(null);
 </script>
 
-<StatusBar {status} />
+{#if notification}
+  <StatusBar {notification} />
+{/if}
 <main class="container">
-  <Calculator on:status={({ detail }) => (status = { ...status, ...detail })} />
+  <Calculator sendMessage={(payload) => { notification = payload; }} />
 </main>
 
 <style lang="scss">

@@ -1,20 +1,21 @@
 <script lang="ts">
-  import type { CalculatorStatus } from "@/types/Calculator";
+  import type { NotificationPayload } from "@/types/calculator";
 
-  export let status: CalculatorStatus = {
-    active: false,
-    message: null,
-    color: "#27272780"
+  interface Props {
+    notification: NotificationPayload | null
   };
+  let {
+    notification = $bindable({ message: null, color: "#27272780" })
+  }: Props = $props();
 
-  $: if (status && status.active) {
-    setTimeout(() => (status.active = false), status.duration);
-  }
+  $effect.pre(() => {
+    setTimeout(() => { notification = null; }, 3000);
+  });
 </script>
 
-{#if status.active}
-  <section class="status" style="background-color: {status.color}">
-    {status.message}
+{#if notification}
+  <section class="status" style="background-color: {notification.color}">
+    {notification.message}
   </section>
 {/if}
 

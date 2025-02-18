@@ -1,42 +1,40 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
   import { calculateNumber } from "@/calculator";
-  import type { CalculatorMode, CalculatorStatus, CalculatorTankSize } from "@/types/Calculator";
+  import type { CalculatorMode, CalculatorTankSize, NotificationPayload } from "@/types/calculator";
 
-  let input: string;
-  let output: string;
+  interface Props {
+    sendMessage: (payload: NotificationPayload) => void
+  }
 
-  let selectedTank: CalculatorTankSize;
-  let mode: CalculatorMode = "millimeters";
+  let { sendMessage }: Props = $props();
+
+  let input: string = $state("");
+  let output: string = $state("");
+
+  let selectedTank: CalculatorTankSize | null = $state(null);
+  let mode: CalculatorMode = $state("millimeters");
   function changeMode() {
     mode = mode === "millimeters" ? "liters" : "millimeters";
   }
 
-  function calculate() {
+  function calculate(event: SubmitEvent) {
+    event.preventDefault();
     if (!input || !selectedTank) return;
     const inputArray = input.replace(/,/g, ".").split("\n");
     const resultArray: string[] = inputArray.reduce((acc: string[], value: string) => {
-      acc.push(calculateNumber(value, selectedTank, mode).toString());
+      acc.push(calculateNumber(value, selectedTank!, mode).toString());
       return acc;
     }, []);
     output = resultArray.join("\n").replace(/\./g, ",");
   }
 
-  const dispatch = createEventDispatcher();
-  function dispatchMessage(message: string, color: string, duration: number = 3000): void {
-    const data: CalculatorStatus = { message, active: true };
-    if (color) data.color = color;
-    if (duration) data.duration = duration;
-    dispatch("status", data);
-  }
-
   function copyToBuffer() {
     navigator.clipboard.writeText(output);
-    dispatchMessage("Скопировано", "#2aa22a80");
+    sendMessage({ message: "Скопировано", color: "#2aa22a80" });
   }
 </script>
 
-<form class="calculator" on:submit|preventDefault={calculate}>
+<form class="calculator" onsubmit={calculate}>
   <div class="area">
     <textarea
       bind:value={input}
@@ -46,7 +44,7 @@
       placeholder={mode === "millimeters" ? "Замеры в миллиметрах" : "Замеры в литрах"}
     ></textarea>
     <select class:empty={!selectedTank} bind:value={selectedTank}>
-      <option selected value hidden>Выбор бака</option>
+      <option selected value={null} hidden>Выбор бака</option>
       <option value="490">Малый (490)</option>
       <option value="530">Средний (530)</option>
       <option value="550">Большой (550)</option>
@@ -55,7 +53,7 @@
   </div>
   <div class="center-block">
     <button class="success" type="submit" disabled={!selectedTank}>Рассчитать</button>
-    <button type="button" on:click={changeMode}>{mode === "millimeters" ? "ММ → Л" : "Л → ММ"}</button>
+    <button type="button" onclick={changeMode}>{mode === "millimeters" ? "ММ → Л" : "Л → ММ"}</button>
     <button class="error" type="reset">Очистить поля</button>
   </div>
   <div class="area">
@@ -66,7 +64,7 @@
       spellcheck="false"
       placeholder={mode === "millimeters" ? "Замеры в литрах" : "Замеры в миллиметрах"}
     ></textarea>
-    <button type="button" on:click={copyToBuffer} disabled={!output}>Копировать</button>
+    <button type="button" onclick={copyToBuffer} disabled={!output}>Копировать</button>
   </div>
 </form>
 
