@@ -1,5 +1,5 @@
 import tankData from "@/tankData.json";
-import type { CalculatorMode, CalculatorTankSize } from "@/types/Calculator";
+import type { CalculatorMode, CalculatorTankSize } from "@/types/calculator";
 
 function calculateLiters(mm: number, tank: number[]): string {
   let result: number;
